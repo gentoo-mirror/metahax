@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=sys-fs/fuse sys-fs/e2fsprogs sys-libs/e2fsprogs-libs
+DESCRIPTION=FUSE module to mount ext2, ext3, and ext4 file system devices or images.
+EAPI=7
+HOMEPAGE=https://github.com/alperakcan/fuse-ext2
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/fuse sys-fs/e2fsprogs sys-libs/e2fsprogs-libs
+SLOT=0
+SRC_URI=https://github.com/alperakcan/fuse-ext2/archive/v0.0.10.tar.gz
+_md5_=543392f4e8353a6dbe60efab5cf01616
