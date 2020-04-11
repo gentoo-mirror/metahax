@@ -2,5 +2,7 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-crypt/nwipe:dmi - Use sys-apps/dmidecode to read SMBIOS/DMI host data
+app-crypt/nwipe:smart - Use sys-apps/smartmontools to read serial numbers from USB-connected IDE/SATA drives.
 games-util/minigalaxy:system-dosbox - Use system DOSBox instead of a game's packaged version.
 games-util/minigalaxy:system-scummvm - Use system ScummVM instead of a game's packaged version.
