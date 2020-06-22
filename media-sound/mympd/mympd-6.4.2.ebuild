@@ -51,19 +51,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ $(getent passwd mympd) ]; then
-		elog "User 'mympd' already exists."
-	else
-		enewuser mympd -1 -1 -1 audio
-	fi
-	if [ $(getent group mympd) ]; then
-		elog "Group 'mympd' already exists."
+	if [ "$(getent group mympd)" ]; then
+		elog "Group 'mympd' already exists; not adding."
 	else
 		enewgroup mympd
+	fi
+	if [ "$(getent passwd mympd)" ]; then
+		elog "User 'mympd' already exists; not adding."
+	else
+		enewuser mympd -1 -1 -1 audio
 	fi
 
 	elog
 	elog "Modify /etc/mympd.conf to suit your needs or use the"
-	elog "\`mympd-config\` tool to generate a valid mympd.conf"
+	elog "\`mympd-config\` tool to generate a valid mympd.conf automatically."
 	elog
 }
