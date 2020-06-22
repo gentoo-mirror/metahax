@@ -48,17 +48,6 @@ src_install() {
     fi
 	${D}/usr/bin/mympd-config --mympdconf ${D}/etc/mympd.conf
 	dodoc ${S}/README.md
-
-	if [ $(getent passwd mympd) ]; then
-		elog "User 'mympd' already exists."
-	else
-		enewuser mympd -1 -1 -1 audio
-	fi
-	if [ $(getent group mympd) ]; then
-		elog "Group 'mympd' already exists."
-	else
-		enewgroup mympd
-	fi
 }
 
 pkg_postinst() {
