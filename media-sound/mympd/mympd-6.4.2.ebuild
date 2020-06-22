@@ -17,11 +17,11 @@ SRC_URI="https://github.com/jcorporation/${MY_PN}/archive/v${PV}.tar.gz -> ${PN}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm ~arm64"
-IUSE="+flac +id3 ssl systemd"
+IUSE="+flac +id3 java ssl systemd"
 
 BDEPEND="
 	>=dev-util/cmake-2.6
-	|| ( >=virtual/jre-1.7 >=virtual/jdk-1.7 )
+	java? ( || ( >=virtual/jre-1.7 >=virtual/jdk-1.7 ) )
 	dev-lang/perl"
 
 RDEPEND="
@@ -29,11 +29,6 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 		id3? ( media-libs/libid3tag )
 		flac? ( media-libs/flac )"
-
-pkg_setup() {
-	enewgroup mympd
-	enewuser mympd -1 -1 -1 audio
-}
 
 src_compile() {
 	default
@@ -53,11 +48,22 @@ src_install() {
     fi
 	${D}/usr/bin/mympd-config --mympdconf ${D}/etc/mympd.conf
 	dodoc ${S}/README.md
+
+	if [ $(getent passwd mympd) ]; then
+		elog "User 'mympd' already exists."
+	else
+		enewuser mympd -1 -1 -1 audio
+	fi
+	if [ $(getent group mympd) ]; then
+		elog "Group 'mympd' already exists."
+	else
+		enewgroup mympd
+	fi
 }
 
 pkg_postinst() {
 	elog
-	elog "Adapt the configuration file /etc/mympd.conf to your needs or use the"
-	elog "\`mympd-config\` tool to generate automatically a valid mympd.conf"
+	elog "Modify /etc/mympd.conf to suit your needs or use the"
+	elog "\`mympd-config\` tool to generate a valid mympd.conf"
 	elog
 }
