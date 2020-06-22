@@ -8,4 +8,5 @@ games-util/minigalaxy:system-dosbox - Use system DOSBox instead of a game's pack
 games-util/minigalaxy:system-scummvm - Use system ScummVM instead of a game's packaged version.
 media-sound/mympd:flac - Use media-libs/flac to extract embedded album art from FLAC files.
 media-sound/mympd:id3 - Use media-libs/libid3tag to extract embedded album art.
+media-sound/mympd:java - Minify .js and .css files with Java.
 media-sound/mympd:ssl - Enable HTTPS transport with dev-libs/openssl
