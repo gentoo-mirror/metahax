@@ -10,3 +10,4 @@ media-sound/mympd:flac - Use media-libs/flac to extract embedded album art from 
 media-sound/mympd:id3 - Use media-libs/libid3tag to extract embedded album art.
 media-sound/mympd:java - Minify .js and .css files with Java.
 media-sound/mympd:ssl - Enable HTTPS transport with dev-libs/openssl
+media-sound/mympd:systemd - Install systemd init script.
