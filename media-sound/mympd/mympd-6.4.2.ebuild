@@ -30,11 +30,6 @@ RDEPEND="
 		id3? ( media-libs/libid3tag )
 		flac? ( media-libs/flac )"
 
-pkg_setup() {
-	enewgroup mympd
-	enewuser mympd -1 -1 -1 audio
-}
-
 src_compile() {
 	default
 	ENABLE_SSL=$(usex ssl "ON" "OFF")
@@ -56,8 +51,19 @@ src_install() {
 }
 
 pkg_postinst() {
+	if [ $(getent passwd mympd) ]; then
+		elog "User 'mympd' already exists."
+	else
+		enewuser mympd -1 -1 -1 audio
+	fi
+	if [ $(getent group mympd) ]; then
+		elog "Group 'mympd' already exists."
+	else
+		enewgroup mympd
+	fi
+
 	elog
-	elog "Adapt the configuration file /etc/mympd.conf to your needs or use the"
-	elog "\`mympd-config\` tool to generate automatically a valid mympd.conf"
+	elog "Modify /etc/mympd.conf to suit your needs or use the"
+	elog "\`mympd-config\` tool to generate a valid mympd.conf"
 	elog
 }
