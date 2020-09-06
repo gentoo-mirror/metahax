@@ -44,6 +44,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.0
 	>=sys-devel/gettext-0.18
 	virtual/pkgconfig
+	!>=net-libs/libnma-1.8.25
 "
 
 PDEPEND="virtual/notification-daemon" #546134
@@ -55,7 +56,7 @@ PATCHES=(
 src_configure() {
 	local myconf=(
 		--with-appindicator=$(usex appindicator ubuntu no)
-		--with-libnm-gtk
+		--with-libnm-gtk # Keeping this because some legacy software still depends on it
 		--without-libnma-gtk4
 		--disable-lto
 		--disable-ld-gc
