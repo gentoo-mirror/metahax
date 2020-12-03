@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 	system-scummvm? ( games-engines/scummvm )
 "
 
-PATCHES=( "${FILESDIR}/${P}-paths.patch" )
+#PATCHES=( "${FILESDIR}/${P}-paths.patch" )
 
 python_prepare() {
 	sed -i -e "s/find_packages()/find_packages(exclude=['tests'])/" setup.py || die
