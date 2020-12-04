@@ -17,50 +17,57 @@ SRC_URI="https://github.com/jcorporation/${MY_PN}/archive/v${PV}.tar.gz -> ${PN}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm ~arm64"
-IUSE="+flac +id3 java ssl systemd"
+IUSE="+flac +id3 java -lua ssl systemd"
 
 BDEPEND="
-	>=dev-util/cmake-2.6
+	>=dev-util/cmake-3.4
 	java? ( >=virtual/jre-1.7 )
 	dev-lang/perl"
 
 RDEPEND="
+	lua? ( >=dev-lang/lua-5.3 )
 	ssl? ( >=dev-libs/openssl-1.1 )
 	systemd? ( sys-apps/systemd )
-		id3? ( media-libs/libid3tag )
-		flac? ( media-libs/flac )"
+	id3? ( media-libs/libid3tag )
+	flac? ( media-libs/flac )"
+
+QA_PRESTRIPPED="
+	usr/bin/mympd
+	usr/bin/mympd-config
+	usr/bin/mympd-script"
 
 src_compile() {
 	default
-	ENABLE_SSL=$(usex ssl "ON" "OFF")
-	ENABLE_LIBID3TAG=$(usex id3 "ON" "OFF")
-	ENABLE_FLAC=$(usex flac "ON" "OFF")
-	./build.sh release
+	export ENABLE_FLAC=$(usex flac "ON" "OFF")
+	export ENABLE_LIBID3TAG=$(usex id3 "ON" "OFF")
+	export ENABLE_LUA=$(usex lua "ON" "OFF")
+	export ENABLE_SSL=$(usex ssl "ON" "OFF")
+	./build.sh release || die
 }
 
 src_install() {
 	cd release
 	dobin mympd
 	dobin cli_tools/mympd-config
+	if use lua; then
+		dobin cli_tools/mympd-script
+	fi
 	newinitd "contrib/initscripts/mympd.openrc" "${PN}"
 	if use systemd; then
-        systemd_newunit contrib/initscripts/mympd.service mympd.service
-    fi
-	${D}/usr/bin/mympd-config --mympdconf ${D}/etc/mympd.conf
-	dodoc ${S}/README.md
+		systemd_newunit contrib/initscripts/mympd.service mympd.service
+	fi
+	"${D}/usr/bin/mympd-config" --mympdconf "${D}/etc/mympd.conf"
+	dodoc "${S}/README.md"
 }
 
 pkg_postinst() {
-	if [ "$(getent group mympd)" ]; then
-		elog "Group 'mympd' already exists; not adding."
-	else
-		enewgroup mympd
-	fi
-	if [ "$(getent passwd mympd)" ]; then
-		elog "User 'mympd' already exists; not adding."
-	else
-		enewuser mympd -1 -1 -1 audio
-	fi
+	getent group mympd > /dev/null &&
+	elog "Group 'mympd' already exists; not adding." ||
+	enewgroup mympd
+
+	getent passwd mympd > /dev/null &&
+	elog "User 'mympd' already exists; not adding." ||
+	enewuser mympd -1 -1 -1 audio
 
 	elog
 	elog "Modify /etc/mympd.conf to suit your needs or use the"
