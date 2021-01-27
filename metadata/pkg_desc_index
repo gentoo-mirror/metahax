@@ -3,7 +3,7 @@ acct-user/mympd 0: User for media-sound/mympd
 app-crypt/nwipe 0.28: A fork of dwipe from Darik's Boot and Nuke (DBAN) for secure disk erasure.
 app-text/pdfchain 0.4.4.2: PDF Chain is a graphical user interface for the PDF Toolkit (PDFtk)
 games-emulation/kronos 2.1.5: Sega Saturn emulator. Fork of YabaSanshiro/Yabause.
-games-util/minigalaxy 0.9.2 0.9.3 0.9.4 0.9.4-r1 1.0.0 9999: Simple GOG client for Linux
+games-util/minigalaxy 1.0.0 1.0.2 9999: Simple GOG client for Linux
 gnome-extra/nm-applet 1.8.24-r2: GNOME applet for NetworkManager
 media-sound/mympd 6.6.1 6.7.0 6.8.2: myMPD is a standalone and mobile friendly web-based MPD client.
 net-misc/insync-bin 3.0.27.40677: Full-featured sync client for Google Drive and OneDrive
