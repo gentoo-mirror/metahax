@@ -4,7 +4,6 @@ app-crypt/nwipe 0.28: A fork of dwipe from Darik's Boot and Nuke (DBAN) for secu
 app-text/pdfchain 0.4.4.2: PDF Chain is a graphical user interface for the PDF Toolkit (PDFtk)
 games-emulation/kronos 2.1.5: Sega Saturn emulator. Fork of YabaSanshiro/Yabause.
 gnome-extra/nm-applet 1.8.24-r2: GNOME applet for NetworkManager
-media-sound/mympd 6.8.2 6.10.0 6.11.0: myMPD is a standalone and mobile friendly web-based MPD client.
 net-misc/insync-bin 3.0.27.40677: Full-featured sync client for Google Drive and OneDrive
 net-vpn/networkmanager-sstp 1.2.6 1.2.6-r1 1.2.6-r2: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 sys-fs/fuse-ext2 0.0.10: FUSE module to mount ext2, ext3, and ext4 file system devices or images.
