@@ -3,7 +3,6 @@ acct-user/mympd 0: User for media-sound/mympd
 app-crypt/nwipe 0.28: A fork of dwipe from Darik's Boot and Nuke (DBAN) for secure disk erasure.
 app-text/pdfchain 0.4.4.2: PDF Chain is a graphical user interface for the PDF Toolkit (PDFtk)
 games-emulation/kronos 2.1.5: Sega Saturn emulator. Fork of YabaSanshiro/Yabause.
-gnome-extra/nm-applet 1.8.24-r2: GNOME applet for NetworkManager
 net-misc/insync-bin 3.0.27.40677: Full-featured sync client for Google Drive and OneDrive
 sys-fs/fuse-ext2 0.0.10: FUSE module to mount ext2, ext3, and ext4 file system devices or images.
 sys-kernel/xpadneo 0.9: Advanced Linux Driver for Xbox One Wireless Controller (shipped with Xbox One S)
