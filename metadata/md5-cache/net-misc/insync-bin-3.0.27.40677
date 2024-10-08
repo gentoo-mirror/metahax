@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RESTRICT=bindist
 SLOT=0
 SRC_URI=http://s.insynchq.com/builds/insync-3.0.27.40677-fc30.x86_64.rpm
-_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	rpm	7828cd38ff559545ca52f92064d0f8f4	xdg-utils	5465aed08f1dfc2a75f14cbea4272961
+_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	rpm	7828cd38ff559545ca52f92064d0f8f4	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
 _md5_=c38eb6f7ce274c01b83ad75a2503073d
